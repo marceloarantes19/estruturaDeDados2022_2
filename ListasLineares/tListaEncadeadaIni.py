@@ -10,11 +10,13 @@ while chave != -1:
   no   = No(elem)
   l.insereNoInicio(no)
   print("\n*** Apresentando a lista ***")
-  l.mostraLista()
+  l.mostraListaRec(l.getCabeca().getProx())
   chave = int(input("Digite uma chave (-1 para sair): "))
+l.mostraListaInv(l.getCabeca().getProx())
 
+print("**** Total de elementos na lista: ", l.len2(l.getCabeca().getProx()))
 print("\n\n*** Retirando todos os Nós***")
 while not l.listaVazia():
   no = l.retiraNoInicio()
   print(no.getInfo().getChave()," - ", no.getInfo().getNome())
-  
+

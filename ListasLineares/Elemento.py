@@ -10,4 +10,6 @@ class Elemento:
     return self.__nome
   def setNome(self, n):
     self.__nome = n
+  def getElemento(self):
+    return self.getChave(), self.getNome()
   
