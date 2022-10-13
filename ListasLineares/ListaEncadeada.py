@@ -33,6 +33,17 @@ class ListaEncadeada:
         atual = ant.getProx()
       ant.setProx(None)
       return atual
+
+  # Tarefa de hoje em duplas (Exercícios 6, 7, 9 e 10. Valor 0,25 cada)
+  def insereNaPosicao(self, n, pos):
+    print("codificar aqui")
+  def removeNaPosicao(self, pos):
+    print("codificar aqui")
+  def insereOrdemDeChave(self, n):
+    print("codificar aqui")
+  def retiraChave(self, c): # c é um inteiro que corresponde à chave
+    print("codificar aqui")
+
   def mostraLista(self):
     atual = self.getCabeca().getProx()
     while atual != None:
@@ -42,12 +53,10 @@ class ListaEncadeada:
     if no != None:
       print(no.getInfo().getElemento())
       self.mostraListaRec(no.getProx()) 
-    
   def mostraListaInv(self, no):
     if no != None:
       self.mostraListaInv(no.getProx()) 
       print(no.getInfo().getElemento())
-
   def len(self):
     ret = 0
     atual = self.getCabeca().getProx()
@@ -57,5 +66,7 @@ class ListaEncadeada:
     return ret
   def len2(self, no):
     return 0 if no == None else 1 + self.len2(no.getProx())
-
-
+  def limpar(self, no):
+    if no != None:
+      self.limpar(no.getProx())
+      no.setProx(None)
