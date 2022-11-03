@@ -36,7 +36,17 @@ class ListaEncadeada:
 
   # Tarefa de hoje em duplas (Exercícios 6, 7, 9 e 10. Valor 0,25 cada)
   def insereNaPosicao(self, n, pos):
-    print("codificar aqui")
+    if pos > 0 and pos <= self.len() + 1:
+      ant = self.getCabeca()
+      atu = self.getCabeca().getProx()
+      posi = 1
+      while posi < pos:
+        ant = atu
+        atu = ant.getProx()
+        posi = posi + 1
+      n.setProx(atu)
+      ant.setProx(n)
+
   def removeNaPosicao(self, pos):
     print("codificar aqui")
   def insereOrdemDeChave(self, n):
@@ -47,7 +57,7 @@ class ListaEncadeada:
   def mostraLista(self):
     atual = self.getCabeca().getProx()
     while atual != None:
-      print(atual.getInfo().getChave())
+      print(atual.getInfo().getElemento())
       atual = atual.getProx()
   def mostraListaRec(self, no):
     if no != None:
