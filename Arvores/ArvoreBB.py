@@ -43,3 +43,7 @@ class ArvoreBB:
       self.posOrdem(n.getFD())
       print(n.getElemento().getElemento())
 
+  # Resolucao dos exercícios
+  def ordemDecrescente(self, n):
+    print("codifique aqui")
+
