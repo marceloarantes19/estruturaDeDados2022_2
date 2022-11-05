@@ -45,5 +45,24 @@ class ArvoreBB:
 
   # Resolucao dos exercícios
   def ordemDecrescente(self, n):
-    print("codifique aqui")
+    if n != None: 
+      self.ordemDecrescente(n.getFD())
+      print(n.getElemento().getElemento())
+      self.ordemDecrescente(n.getFE())
+  
+  def achaValorABB(self, n, v):
+    if n != None:
+      if v == n.getElemento().getChave():
+        return True 
+      elif v < n.getElemento().getChave():
+        return self.achaValorABB(n.getFE(), v)
+      else:
+        return self.achaValorABB(n.getFD(), v)
+    return False
+
+  def contaNos(self, n):
+    if n != None: 
+      return 1 + self.contaNos(n.getFE()) + self.contaNos(n.getFD())
+    return 0
+
 
