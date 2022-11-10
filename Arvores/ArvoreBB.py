@@ -27,6 +27,58 @@ class ArvoreBB:
       self.insere(atual, atual.getFE(), el)
     else:
       self.insere(atual, atual.getFD(), el)
+  # Como retirar nó da árvore
+  def retira(self, v):
+    return self.retiraNoTriv(None, self.getRaiz(), v)
+  def retiraNoTriv(self, pai, atu, v):
+    if atu == None:
+      return None
+    if atu.achouChave(v):
+      ret = atu
+      # Se o no a apagar é folha:
+      if atu.eFolha():
+        if pai == None: # Esse nó é o raiz e único da árvore
+          self.setRaiz(None)
+        elif atu.eFE(pai):
+          pai.setFE(None)
+        else:
+          pai.setFD(None)
+      elif atu.temDoisF():
+        return self.retiraNoNaoTriv(None, atu.getFE(), atu)
+      elif atu.temFE():
+        if atu == self.getRaiz():
+          self.setRaiz(atu.getFE())
+        elif atu.eFE(pai):
+          pai.setFE(atu.getFE())
+        else:
+          pai.setFD(atu.getFE())
+        atu.setFE(None)
+      else:
+        if atu == self.getRaiz():
+          self.setRaiz(atu.getFD())
+        elif atu.eFE(pai):
+          pai.setFE(atu.getFD())
+        else:
+          pai.setFD(atu.getFD())
+        atu.setFD(None)
+      return ret
+    elif atu.chaveMenor(v):
+      return self.retiraNoTriv(atu, atu.getFD(), v)
+    else:
+      return self.retiraNoTriv(atu, atu.getFE(), v)
+  def retiraNoNaoTriv(self, pai, atu, fixo):
+    if atu.getFD()!=None:
+      return self.retiraNoNaoTriv(atu, atu.getFD(), fixo)
+    else: 
+      x = fixo.getElemento()
+      fixo.setElemento(atu.getElemento())
+      atu.setElemento(x)
+      if pai != None:
+        pai.setFD(atu.getFE())
+      else:
+        fixo.setFE(atu.getFE())
+      atu.setFE(None)
+      return atu
   def emOrdem(self, n):
     if n != None: 
       self.emOrdem(n.getFE())

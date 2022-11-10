@@ -17,5 +17,22 @@ class NoABB:
     return self.__fd 
   def setFD(self, fd):
     self.__fd = fd 
-
+  def eFolha(self):
+    return self.getFE() == None and self.getFD() == None
+  def temFE(self):
+    return self.getFE() != None 
+  def temFD(self):
+    return self.getFD() != None
+  def temDoisF(self):
+    return self.temFE() and self.temFD()
+  def eFE(self, no):
+    return no.getFE() == self
+  def eFD(self, no):
+    return no.getFD() == self
+  def achouChave(self, valor):
+    return self.getElemento().getChave() == valor
+  def chaveMenor(self, valor):
+    return self.getElemento().getChave() < valor
+  def chaveMaior(self, valor):
+    return self.getElemento().getChave() > valor
 
